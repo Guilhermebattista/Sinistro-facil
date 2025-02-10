@@ -189,10 +189,16 @@ button {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+  transition: background-color 0.2s;
 }
 
+
 button:hover {
-  background-color: #36a374; /* Cor ao passar o mouse */
+  background-color: #6b95a3; 
+}
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .register-link {
@@ -211,7 +217,11 @@ button:hover {
   text-align: center;
   margin-top: 10px; /* Espaçamento acima do link */
   font-size: 14px; /* Tamanho da fonte do link */
+  color: #7CA6B4;
+
+ 
 }
+
 .description {
   margin-bottom: 10px;
   text-align: center; /* Centraliza o texto */

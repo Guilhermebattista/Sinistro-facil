@@ -93,12 +93,18 @@
     cursor: pointer;
     width: 100%;
     font-weight: bold;
+    transition: background-color 0.2s;
   }
   
   button:hover {
-    background-color: #36a374; /* Cor ao passar o mouse */
-    color: #f0f0f0;
+    background-color: #6b95a3;
+    color: #ffff; /* Cor ao passar o mouse */
+    
   }
+  button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
   
   .link-container {
     margin-top: 20px;
