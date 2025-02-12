@@ -4,7 +4,6 @@
       <!-- Seção do Formulário -->
       <div class="form-section">
         <div class="header">
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.1">
           <img src="../assets/image.png" alt="Logo" class="logo" />
           <h1 class="title">Bem vindo(a)</h1>
           <p class="subtitle">Preencha os dados abaixo para criar sua conta.</p>
@@ -210,11 +209,10 @@ export default {
 </script>
 
 <style scoped>
-
 .page-container {
   min-height: 100vh;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8; /* Fundo claro */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,47 +225,44 @@ export default {
   min-height: 320px; 
   width: 800px;
   max-width: 800px;
-  background: #ffff;
+  background: #ffffff; /* Fundo da seção de registro */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: visible;
 }
 
 .form-section {
   flex: 0.8;
   height: auto;
-  padding: 0.5rem;
-  max-width: 500px; /* Reduzido significativamente */
+  padding: 1.5rem; /* Aumentado para melhor espaçamento */
 }
 
-
-/* Ajuste para dispositivos móveis */
+/* Ajustes para dispositivos móveis */
 @media (max-width: 640px) {
   .page-container {
     padding: 1rem;
-    min-height: 100vh;
   }
 
   .registration {
-    min-height: auto;
-    height: auto;
+    flex-direction: column;
   }
 
   .form-section {
     padding: 1.5rem;
-    height: auto;
+  }
+
+  .image-section {
+    display: none;
   }
 }
 
+/* Restante dos estilos permanece o mesmo */
 .header {
   text-align: center;
   margin-bottom: 10px;
 }
 
-
-
 .title {
-  font-size: larger; /* Tamanho da fonte do cabeçalho */
+  font-size: larger; 
   margin-bottom: 10px;
   color: #2f445a;
 }
@@ -281,7 +276,7 @@ export default {
 
 .input-group {
   margin-bottom: 0.68rem;
-  padding-left:  30px;
+  padding-left: 30px;
   padding-right: 30px;
 }
 
@@ -319,7 +314,6 @@ export default {
   gap: 0.7rem;
 }
 
-
 .profile-preview {
   width: 75px;
   height: 75px;
@@ -335,12 +329,14 @@ export default {
   height: 100%;
   object-fit: cover;
 }
+
 .logo {
-  max-width: 23%; /* Ajuste o tamanho do logo conforme necessário */
+  max-width: 23%;
   max-height: 20%;
-  margin-bottom: 0px; /* Espaçamento abaixo do logo */
+  margin-bottom: 0px;
   margin-top: 0px;
 }
+
 .overlay {
   position: absolute;
   top: 0;
@@ -359,6 +355,8 @@ export default {
   opacity: 1;
 }
 
+
+
 .upload-icon {
   font-size: 1.5rem;
   color: white;
@@ -370,7 +368,7 @@ export default {
 
 .upload-text {
   color: #666;
-  font-size: 10px
+  font-size: 10px;
 }
 
 .form-actions {
@@ -390,7 +388,7 @@ export default {
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 13;
+  font-size: 13px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -415,10 +413,10 @@ export default {
 .login-link:hover {
   text-decoration: underline;
 }
-.text-perfil{
+
+.text-perfil {
   font-size: 13px;
   color: #444242;
- 
 }
 
 .image-section {
@@ -426,7 +424,7 @@ export default {
   background-color: #f8f8f8;
   padding: 10px;
   display: flex;
-  align-items:  flex-start;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -460,7 +458,6 @@ export default {
   line-height: 1.5;
 }
 
-/* Responsividade */
 @media (max-width: 1024px) {
   .registration {
     flex-direction: column;
@@ -472,28 +469,6 @@ export default {
 
   .image-section {
     padding: 2rem 1rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .page-container {
-    padding: 1rem;
-  }
-
-  .registration {
-    border-radius: 8px;
-  }
-
-  .form-section {
-    padding: 1.5rem;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .image-section {
-    display: none;
   }
 }
 </style>

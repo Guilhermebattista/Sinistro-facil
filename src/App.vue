@@ -1,63 +1,122 @@
 <template>
   <div id="app">
-    <header class="navbar">
-      <nav>
-        <router-link to="/">Login</router-link>
-        <router-link to="/register">Register</router-link>
-        <router-link to="/about">About</router-link>
-      </nav>
+    <header class="header" v-if="isInternalRoute">
+      <div class="header-content">
+        <router-link to="/incident-list" class="logo">
+          <img src="../src/assets/image.png" alt="Logo da Aplicação" />
+        </router-link>
+        <nav class="nav-links">
+          <router-link to="/incident-form" class="nav-link">Home</router-link>
+          <router-link to="/incident-list" class="nav-link">Consultas de Ocorrências</router-link>
+        </nav>
+        <div class="profile" style="cursor: pointer;"> 
+           <img src="../src/assets/user.png" alt="Imagem de Perfil" class="profile-image" /> 
+           <div class="username">minha conta</div> 
+         </div> 
+      </div>
     </header>
     <main>
       <router-view />
+      <ProfileModal v-if="isProfileOpen" @close="isProfileOpen = false" />
     </main>
   </div>
 </template>
 
 <script>
+import ProfileModal from './components/Profile.vue'; // Verifique se o caminho está correto
+
 export default {
   name: 'App',
+  components: {
+    ProfileModal,
+  },
+  data() {
+    return {
+      isProfileOpen: false, // Estado para controlar o modal
+    };
+  },
+  computed: {
+    isInternalRoute() {
+      return this.$route.path === '/incident-list' || this.$route.path === '/incident-form';
+    },
+  },
+  methods: {
+    openProfileModal() {
+        console.log("Abrindo modal"); // Debug
+        this.isProfileOpen = true; // Opens the profile modal
+    console.log("Abrindo modal"); // Debug
+      console.log("Abrindo modal"); // Debug
+      // this.isProfileOpen = false; // Prevents the profile modal from opening
+    },
+  },
 };
 </script>
 
 <style>
 * {
-  margin: 0; /* Remove margens padrão de todos os elementos */
-  padding: 0; /* Remove preenchimento padrão de todos os elementos */
-  box-sizing: border-box; /* Inclui bordas e preenchimentos nas dimensões do elemento */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  background-color: #f8f8f8; /* Cor de fundo igual à da navbar */
-  min-height: 100vh; /* Altura do viewport */
+  background-color: #f8f8f8;
+  min-height: 100vh;
 }
 
-.navbar {
+.header {
+  background-color: #598d96; /* Cor azul da barra */
+  color: white; /* Cor do texto na barra */
+  padding: 10px 20px; /* Espaçamento na barra */
+  display: flex; /* Ativa o flexbox */
+  justify-content: space-between; /* Distribui os elementos */
+  align-items: center;
+}
+
+.header-content {
   display: flex;
+  flex: 1; /* Permite que o conteúdo ocupe o espaço disponível */
+  align-items: center;
+  justify-content: space-between; /* Distribui os elementos */
+}
+
+.nav-links {
+  display: flex; /* Flexbox para os links de navegação */
   justify-content: center; /* Centraliza os links */
-  align-items: center; /* Centraliza verticalmente */
-  height: 40px; /* Ajuste a altura da barra de navegação */
-  background-color: #f8f8f8; /* Cor de fundo da barra */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+  flex: 1; /* Permite que ocupem o espaço disponível */
 }
 
-.navbar nav {
+.logo img {
+  height: 40px; /* Altura do logo */
+}
+
+.nav-link {
   display: flex;
-  gap: 20px; /* Espaço entre os links */
-}
-
-.navbar a {
+  align-items: center;
+  color: white; /* Cor do texto */
   text-decoration: none; /* Remove sublinhado */
-  color: #333; /* Cor do texto */
+  margin: 0 20px; /* Espaço entre os links */
+  transition: color 0.3s; /* Efeito de transição para hover */
 }
 
-.navbar a:hover {
-  color: #007bff; /* Cor ao passar o mouse */
+.nav-link:hover {
+  color: #d1e9ee; /* Cor ao passar o mouse */
 }
 
-main {
-  padding: 20px; /* Espaçamento no conteúdo principal */
-  background-color: #ffff; /* Cor de fundo igual à da navbar */
-  min-height: calc(100vh - 40px); /* Garante que o main ocupe o espaço restante */
+.profile {
+  display: flex;
+  flex-direction: column; /* Alinha os elementos em coluna */
+  align-items: center; /* Centraliza os itens */
+}
+
+.profile-image {
+  height: 40px; /* Altura da foto de perfil */
+  border-radius: 50%; /* Tornar a imagem circular */
+}
+
+.username {
+  color: white; /* Cor do texto */
+  font-size: 12px; /* Tamanho da fonte */
 }
 </style>

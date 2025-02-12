@@ -91,10 +91,13 @@ export default {
   background-color: #f8f8f8; 
   padding: 20px;
   border-radius: 10px; /* Bordas arredondadas */
-  width: 80%; /* Reduz a largura total do contêiner */
+  width: 100%; /* Reduz a largura total do contêiner */
   max-width: 1000px; /* Limita a largura máxima */
   margin: 0 auto; /* Centraliza o contêiner no meio da tela */
   overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse o contêiner */
+}
+#app {
+  background-color: #f8f8f8;
 }
 
 .image-wrapper {
