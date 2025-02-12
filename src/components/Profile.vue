@@ -1,47 +1,101 @@
 <template>
-  <Transition name="slide">
-    <div v-if="isOpen" class="fixed right-0 top-0 h-full w-80 bg-white shadow-lg p-6 overflow-y-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold">Meu Perfil</h2>
-        <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
-          <span class="text-2xl">&times;</span>
-        </button>
+  <div>
+    <button class="button" @click="toggleModal">
+      <div class="button-content">
+        <img src="../assets/user.png" alt="photo-user">
+        <span>Minha Conta</span>
       </div>
-      <p>Conteúdo do perfil aqui...</p>
-      <button @click="closeModal" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Fechar</button>
+    </button>
+
+    <!-- Fundo escurecido quando o modal estiver aberto -->
+    <div v-if="isModalOpen" class="overlay" @click="toggleModal"></div>
+
+    <!-- Modal -->
+    <div v-if="isModalOpen" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="toggleModal">&times;</span>
+        <p>This is a modal on the right side of the screen!</p>
+      </div>
     </div>
-  </Transition>
+  </div>
 </template>
+
 
 <script>
 export default {
-  props: {
-    isOpen: {
-      type: Boolean,
-      required: true
-    }
+  data() {
+    return {
+      isModalOpen: false,
+    };
   },
   methods: {
-    closeModal() {
-      console.log("Modal is closing"); // Log para depuração
-      this.$emit('close');
-    }
+    toggleModal() {
+      this.isModalOpen = !this.isModalOpen;
+    },
   },
-  mounted() {
-    console.log("Profile modal mounted with isOpen:", this.isOpen); // Log para depuração
-  }
 };
 </script>
 
 <style scoped>
-.fixed {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(4px); /* Aplica desfoque */
+  z-index: 900;
+}
+
+
+.modal {
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
-  width: 300px; 
-  background-color: white;
+  height: 100vh; /* Ocupa a altura total */
+  width: 500px; 
+  background-color: #598d96;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 1000; /* Para garantir que o modal esteja acima de outros elementos */
+  z-index: 1001; /* Acima do overlay */
+}
+/* Estilização do conteúdo do modal */
+.modal-content {
+  padding: 20px;
+  color: white;
+}
+
+/* Botão de fechar */
+.close {
+  cursor: pointer;
+  font-size: 24px;
+  float: right;
+}
+
+/* Botão de abrir o modal */
+.button {
+  background-color: #598d96;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Centralização do conteúdo do botão */
+.button-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ajuste da imagem do botão */
+.button img {
+  width: 40px;
+  height: 40px;
 }
 </style>

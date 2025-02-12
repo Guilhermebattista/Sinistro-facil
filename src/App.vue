@@ -9,7 +9,7 @@
           <router-link to="/incident-form" class="nav-link">Home</router-link>
           <router-link to="/incident-list" class="nav-link">Consultas de Ocorrências</router-link>
         </nav>
-        <button-modal/>
+        <Profile/>
       </div>
     </header>
     <main>
@@ -21,12 +21,12 @@
 
 <script>
 
-import buttonModal from './components/buttonModal.vue';
+import Profile from './components/Profile.vue';
 
 export default {
   name: 'App',
   components: {
-    buttonModal,
+    Profile,
   },
   data() {
     return {

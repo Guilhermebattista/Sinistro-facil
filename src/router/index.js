@@ -4,7 +4,7 @@ import Register from '@/components/Register.vue';
 import ForgotPassword from '@/components/ForgotPassword.vue'; 
 import IncidentForm from '@/components/IncidentForm.vue';
 import IncidentList from '@/components/IncidentList.vue';
-import Profile from '@/components/Profile.vue';
+
 
 const routes = [
   {
@@ -33,12 +33,7 @@ const routes = [
     component: IncidentList,
   
   },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile,
   
-  }
 ];
 
 const router = createRouter({
