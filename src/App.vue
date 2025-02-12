@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header class="header" v-if="isInternalRoute">
-      <div class="header-content">
+    <header class="heade" v-if="isInternalRoute">
+      <div class="heade-content">
         <router-link to="/incident-list" class="logo">
           <img src="../src/assets/image.png" alt="Logo da Aplicação" />
         </router-link>
@@ -9,10 +9,7 @@
           <router-link to="/incident-form" class="nav-link">Home</router-link>
           <router-link to="/incident-list" class="nav-link">Consultas de Ocorrências</router-link>
         </nav>
-        <div class="profile" style="cursor: pointer;"> 
-           <img src="../src/assets/user.png" alt="Imagem de Perfil" class="profile-image" /> 
-           <div class="username">minha conta</div> 
-         </div> 
+        <button-modal/>
       </div>
     </header>
     <main>
@@ -23,12 +20,13 @@
 </template>
 
 <script>
-import ProfileModal from './components/Profile.vue'; // Verifique se o caminho está correto
+
+import buttonModal from './components/buttonModal.vue';
 
 export default {
   name: 'App',
   components: {
-    ProfileModal,
+    buttonModal,
   },
   data() {
     return {
@@ -65,7 +63,7 @@ export default {
   min-height: 100vh;
 }
 
-.header {
+.heade {
   background-color: #598d96; /* Cor azul da barra */
   color: white; /* Cor do texto na barra */
   padding: 10px 20px; /* Espaçamento na barra */
@@ -74,7 +72,7 @@ export default {
   align-items: center;
 }
 
-.header-content {
+.heade-content {
   display: flex;
   flex: 1; /* Permite que o conteúdo ocupe o espaço disponível */
   align-items: center;

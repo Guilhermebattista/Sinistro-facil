@@ -39,7 +39,7 @@ export default {
   top: 0;
   right: 0;
   height: 100vh;
-  width: 300px; /* ou ajuste conforme necessário */
+  width: 300px; 
   background-color: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1000; /* Para garantir que o modal esteja acima de outros elementos */
