@@ -20,15 +20,23 @@
           <!-- Profile Photo Section -->
           <div class="profile-section">
             <div class="profile-background" :class="{ 'editing-background': isEditing }">
-              <div class="profile-preview" @click="triggerFileInput">
+              <div class="profile-preview">
                 <img 
                   :src="profilePictureUrl || require('../assets/user.jpg')" 
                   class="preview-image"
                   alt="Profile"
                 />
-                <div class="profile-overlay">
+                <div class="profile-overlay" @click="triggerFileInput">
                   <span class="upload-icon">📷</span>
                 </div>
+                <input 
+                  type="file"
+                  ref="fileInput"
+                  @change="onFileChange"
+                  accept="image/*"
+                  class="file-input"
+                  style="display: none;"  
+                />
               </div>
               <!-- Greeting Message -->
               <div class="greeting-message">
@@ -186,12 +194,12 @@ export default {
       }
     },
     triggerFileInput() {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput.click(); // Clica no input de arquivo
     },
     onFileChange(event) {
       const file = event.target.files[0];
       if (file) {
-        this.profilePictureUrl = URL.createObjectURL(file);
+        this.profilePictureUrl = URL.createObjectURL(file); // Atualiza a imagem
       }
     },
     changePassword() {
@@ -300,9 +308,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;  /* Ajuste o tamanho conforme necessário */
-  height: 70px; /* Ajuste o tamanho conforme necessário */
-  border-radius: 50%; /* Mantém o círculo */
+  width: 70px;  
+  height: 70px; 
+  border-radius: 50%; 
   overflow: hidden;
   cursor: pointer;
   border: 3px solid #598d96;
@@ -310,7 +318,7 @@ export default {
 }
 
 .profile-preview:hover {
-  transform: scale(1.05);
+ transform: scale(1.05);
   border-color: #456b72;
 }
 
@@ -323,10 +331,11 @@ export default {
 
 .profile-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+  width: 74px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -469,19 +478,20 @@ export default {
 
 .button {
   background-color: #598d96;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   color: white;
-  height: 40px;
+  height: 20px;
+  margin-top: -18px;
   transition: all 0.2s ease;
 }
 
 .button:hover {
-  background-color: #456b72;
+  
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
 }
 
 .button-content {
