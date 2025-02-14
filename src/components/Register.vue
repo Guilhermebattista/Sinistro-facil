@@ -66,7 +66,7 @@
             <div class="profile-upload">
               <div class="profile-preview" @click="triggerFileInput">
                 <img 
-                  :src="profilePictureUrl || defaultProfilePicture" 
+                  :src="profilePictureUrl || require('../assets/user.jpg')" 
                   alt="Foto de Perfil"
                   class="preview-image"
                 />
